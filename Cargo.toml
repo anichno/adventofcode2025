@@ -7,9 +7,9 @@ edition = "2024"
 name = "day1"
 path = "src/day1/main.rs"
 
-# [[bin]]
-# name = "day2"
-# path = "src/day2/main.rs"
+[[bin]]
+name = "day2"
+path = "src/day2/main.rs"
 
 # [[bin]]
 # name = "day3"
@@ -53,3 +53,4 @@ path = "src/day1/main.rs"
 
 
 [dependencies]
+fancy-regex = "0.16.2"
