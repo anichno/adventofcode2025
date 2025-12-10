@@ -29,26 +29,35 @@ fn solve2(input: &[(i64, i64)]) -> i64 {
         .collect();
     let outer_shape = Polygon::new(LineString::new(coords), vec![]);
 
-    let mut max_area = 0;
+    let mut areas = Vec::new();
     for (a_idx, a) in input.iter().enumerate() {
         for b in input.iter().skip(a_idx + 1) {
-            let rect = Rect::new(
-                Coord {
-                    x: a.0 as f64,
-                    y: a.1 as f64,
-                },
-                Coord {
-                    x: b.0 as f64,
-                    y: b.1 as f64,
-                },
-            );
-            let test_polygon = rect.to_polygon();
-            if outer_shape.covers(&test_polygon) {
-                max_area = max_area.max(((a.0 - b.0).abs() + 1) * ((a.1 - b.1).abs() + 1));
-            }
+            let area = ((a.0 - b.0).abs() + 1) * ((a.1 - b.1).abs() + 1);
+            areas.push((area, *a, *b));
         }
     }
-    max_area
+
+    areas.sort_unstable_by_key(|a| a.0);
+    areas.reverse();
+
+    for (area, a, b) in areas {
+        let rect = Rect::new(
+            Coord {
+                x: a.0 as f64,
+                y: a.1 as f64,
+            },
+            Coord {
+                x: b.0 as f64,
+                y: b.1 as f64,
+            },
+        );
+        let test_polygon = rect.to_polygon();
+        if outer_shape.covers(&test_polygon) {
+            return area;
+        }
+    }
+
+    0
 }
 
 fn main() {
