@@ -35,9 +35,9 @@ path = "src/day7/main.rs"
 name = "day8"
 path = "src/day8/main.rs"
 
-# [[bin]]
-# name = "day9"
-# path = "src/day9/main.rs"
+[[bin]]
+name = "day9"
+path = "src/day9/main.rs"
 
 # [[bin]]
 # name = "day10"
@@ -54,3 +54,4 @@ path = "src/day8/main.rs"
 
 [dependencies]
 fancy-regex = "0.16.2"
+geo = "0.32.0"
