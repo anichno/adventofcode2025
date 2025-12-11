@@ -43,9 +43,9 @@ path = "src/day9/main.rs"
 name = "day10"
 path = "src/day10/main.rs"
 
-# [[bin]]
-# name = "day11"
-# path = "src/day11/main.rs"
+[[bin]]
+name = "day11"
+path = "src/day11/main.rs"
 
 # [[bin]]
 # name = "day12"
@@ -55,4 +55,5 @@ path = "src/day10/main.rs"
 [dependencies]
 fancy-regex = "0.16.2"
 geo = "0.32.0"
+petgraph = "0.8.3"
 z3 = { version = "0.19.6", features = ["bundled"] }
